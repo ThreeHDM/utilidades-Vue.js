@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>V-if</title>
+</head>
+<body>
+    <div id="main">
+        <div class="container">
+            <div class="row">
+               
+                <div class="col-md-6">
+                   <h2>Ejemplo 1 solo con if</h2> 
+                   <!-- Si la caja de texto está vacía, aparecerá el elemento que tiene el v-if -->
+                   <h3 v-if="!message">Escribe tu sugerencia</h3>
+                   <!-- Cuando haya un mensaje escribimos otro texto -->
+                   <h3 v-if="message">Presiona ENTER para enviar</h3>
+                   <textarea v-model="message" class="form-control"></textarea>
+                </div>
+
+                <div class="col-md-6">
+                   <h2>Ejemplo 2 - con if else</h2>
+                   <h3 v-if="!message2">Escribe tu sugerencia</h3>
+                   <!-- Podemos usar v-else para vincularlo con el if que tiene inmediatamente arriba --> 
+                   <h3 v-else>Presiona ENTER para enviar</h3>   
+                   <textarea v-model="message2" class="form-control"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <h2>Ejemplo 3 - uso de etiqueta template</h2>
+                    <template v-if="!message3">
+                    <!-- si no hay nada escrito en la caja muestra todo esto -->
+                        <h3>Escribe tu sugerencia</h3>
+                        <p>El equipo de soporte responde en 24hs</p>
+                        <p><em>Podrías utilizar Twitter para comunicarte</em></p>
+                    </template>
+                    <h3 v-else>Presiona ENTER para enviar</h3>   
+                    <textarea v-model="message3" class="form-control"></textarea>
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+                <div class="col-md-12">
+                    <h3>JSON</h3>
+                    <pre>
+                        {{ $data }}
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#main',
+            data: {
+               message: '',
+               message2: '',
+               message3: ''
+            }
+        })
+        /*Usamos Vshow para mostrar condicionalmente algo*/
+    </script>
+</body>
+</html>
